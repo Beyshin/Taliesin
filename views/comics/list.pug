@@ -1,0 +1,10 @@
+doctype html
+html
+    head
+        title Taliesin
+    body
+        h1 List of all comics:
+        ul
+            each comic in comics
+                li
+                    a(href=`/comics/${comic.id}`) #{comic.name}
