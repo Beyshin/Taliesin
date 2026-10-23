@@ -1,0 +1,16 @@
+doctype html
+html
+    head
+        title Taliesin
+        link(rel="stylesheet", href="/output.css")
+
+    body.bg-gray-900.text-white
+        nav(class="flex items-center h-16 px-6 bg-gray-800")
+            p(class="text-xl font-bold text-white mr-8") Taliesin
+            div(class="flex h-full gap-2")
+                a(href="/").flex.items-center.h-full.px-4.text-gray-300 Strona główna
+                a(href="/comics").flex.items-center.h-full.px-4.text-gray-300 Wszystkie komiksy
+                a(href="/characters").flex.items-center.h-full.px-4.text-gray-300 Bohaterowie
+
+        main.container.mx-auto.p-6
+            block content

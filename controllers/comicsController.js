@@ -13,3 +13,13 @@ exports.getComicById = async (req, res) => {
     }
     res.render('comics/detail', {comic:comic});
 }
+
+exports.removeComicById = async (req, res) => {
+    const id = parseInt(req.params.id);
+    const comic = comicsData.find(c => c.id === id);
+    if(!comic) {
+        return res.status(404).render('comics/not-found');
+    }
+
+    res.render('comics/deletion', {comic:comic});
+}

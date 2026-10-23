@@ -1,7 +1,13 @@
-doctype html
-html
-    head
-        title Taliesin
-    body
-        h1 Home page
-        p This will be a home page
+extends ./layout
+
+block content
+    div.flex.bg-gray-900.flex-col.justify-center
+        div.w-70.flex.flex-col.flex-wrap.gap-4.items-center
+            p.font-bold.text-4xl Taliesin
+            p Baza komiksów
+            div.flex.gap-4
+                a(class="hover:scale-105 transition-all duration-150" href="/comics").rounded-lg.bg-blue-600.font-bold.p-5
+                    p Przejdź do listy komiksów
+                a(class="hover:scale-105 transition-all duration-150" href="/characters").rounded-lg.bg-blue-600.font-bold.p-5
+                    p Przejdź do listy bohaterów
+

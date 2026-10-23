@@ -10,5 +10,7 @@ router.post('/', (req, res) => {
 
 
 router.get('/:id', controller.getComicById);
+router.post("/delete/:id", controller.removeComicById);
+
 
 module.exports = router;

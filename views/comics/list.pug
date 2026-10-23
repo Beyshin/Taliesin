@@ -1,10 +1,11 @@
-doctype html
-html
-    head
-        title Taliesin
-    body
-        h1 List of all comics:
-        ul
-            each comic in comics
-                li
-                    a(href=`/comics/${comic.id}`) #{comic.name}
+extends ../layout
+block content
+    div.flex.rounded-lg.w-full.bg-gray-800.justify-center.items-center.p-6.mx-auto
+        h1.font-bold.text-4xl Lista wszyskich komiksów:
+    div.flex.flex-row.w-full.h-full.flex-wrap
+        each comic in comics
+            div(class="hover:scale-110 transition-all duration-300").w-40.mx-auto.my-10.rounded-lg
+                a(href=`/comics/${comic.id}`)
+                    img(src=`${comic.cover}`, alt=`${comic.name}`).rounded-lg
+                    div.w-100.h-10.justify-center.flex.align-center
+                        h2 #{comic.title}
