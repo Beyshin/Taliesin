@@ -1,3 +1,5 @@
+const characters = require("./characters.js")
+
 const comics = [
   {
     id: 1,
@@ -23,7 +25,7 @@ const comics = [
       writer: "Alan Moore",
       artist: "Dave Gibbons"
     },
-    characters: ["Rorschach", "Dr. Manhattan", "Ozymandias"],
+    characters: ["Rorschach", "Dr.Manhattan", "Ozymandias"],
     description: "Gdy ginie jeden z dawnych bohaterów, Rorschach rozpoczyna śledztwo, które odkrywa spisek mogący zmienić losy świata.",
     cover: "https://upload.wikimedia.org/wikipedia/en/a/a2/Watchmen%2C_issue_1.jpg"
   },

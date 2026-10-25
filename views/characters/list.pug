@@ -1,0 +1,11 @@
+extends ../layout
+block content
+    div.flex.rounded-lg.w-full.bg-gray-800.justify-center.items-center.p-6.mx-auto
+        h1.font-bold.text-4xl Lista postaci:
+    div.flex.flex-row.w-full.h-full.flex-wrap
+        each char in characters
+            div(class="hover:scale-110 transition-all duration-300").w-40.mx-auto.my-10.rounded-lg
+                a(href=`/characters/${char.id}`)
+                    img(src=`${char.image}`, alt=`${char.name}`).rounded-lg
+                    div.w-100.h-10.justify-center.flex.align-center
+                        h2 #{char.name}

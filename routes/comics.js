@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/comicsController');
-
+const middleware = require('../middlewares/auth');
 router.get('/', controller.getAllComics);
 
 router.post('/', (req, res) => {
@@ -9,8 +9,8 @@ router.post('/', (req, res) => {
 });
 
 
-router.get('/:id', controller.getComicById);
-router.post("/delete/:id", controller.removeComicById);
+router.get('/:id', middleware.checkAdmin ,controller.getComicById);
+router.delete("/delete/:id", controller.removeComicById);
 
 
 module.exports = router;
