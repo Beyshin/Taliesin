@@ -2,7 +2,11 @@
 module.exports = {
   content: ["./views/**/*.pug"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        bangers: ['Bangers', 'cursive'],
+      }
+    },
   },
   plugins: [],
 }

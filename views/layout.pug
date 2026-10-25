@@ -3,14 +3,25 @@ html
     head
         title Taliesin
         link(rel="stylesheet", href="/output.css")
+        link(rel="preconnect" href="https://fonts.googleapis.com")
+        link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+        link(href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet")
 
     body.bg-gray-900.text-white
-        nav(class="flex items-center h-16 px-6 bg-gray-800")
-            p(class="text-xl font-bold text-white mr-8") Taliesin
-            div(class="flex h-full gap-2")
-                a(href="/").flex.items-center.h-full.px-4.text-gray-300 Strona główna
-                a(href="/comics").flex.items-center.h-full.px-4.text-gray-300 Wszystkie komiksy
-                a(href="/characters").flex.items-center.h-full.px-4.text-gray-300 Bohaterowie
+        nav(class="flex items-center h-16 px-6 bg-gray-800").font-bangers
+            p.text-3xl.font-bold.text-white.mr-8.cursor-default Taliesin
+            div(class="flex h-full")
+                a(href="/" class="hover:text-white transition-all duration-300 bg-gradient-to-t from-blue-600 from-50% to-transparent to-50% bg-[length:100%_200%] bg-top hover:bg-bottom").flex.items-center.h-full.px-4.text-gray-300.-skew-x-12.border-r-2.border-l-2.border-white Strona główna
+                a(href="/comics" class="hover:bg-blue-600 transition-all duration-300 bg-gradient-to-t from-blue-600 from-50% to-transparent to-50% bg-[length:100%_200%] bg-top hover:bg-bottom").flex.items-center.h-full.px-4.text-gray-300.-skew-x-12.border-r-2 Wszystkie komiksy
+                a(href="/characters" class="hover:bg-blue-600 transition-all duration-300 bg-gradient-to-t from-blue-600 from-50% to-transparent to-50% bg-[length:100%_200%] bg-top hover:bg-bottom").flex.items-center.h-full.px-4.text-gray-300.-skew-x-12.border-r-2 Bohaterowie
 
-        main.container.mx-auto.p-6
+            if username === null
+                div.flex.self-center.ml-auto
+                    a(href="/login" class="hover:border-blue-600 hover:bg-white hover:text-blue-600 transition-all duration-300 border-2").p-2.bg-blue-600.rounded-lg Zaloguj
+            else
+                div.flex.self-center.ml-auto
+                    p.mr-4.self-center Witaj, #{username}
+                    form(action="/logout" method="POST")
+                        button(type="submit" class="hover:border-red-600 hover:bg-white hover:text-red-600 transition-all duration-300 border-2").p-2.bg-red-600.rounded-lg Wyloguj
+        main.container.mx-auto.font-bangers
             block content

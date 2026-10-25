@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
-    a(class=".hover:text-blue-300" href="/characters").text-blue-400.mb-6.inline-block &larr; Wróć do listy
+    a(class=".hover:text-blue-300" href="/characters").text-white.mb-6.inline-block.bg-blue-600.p-5.rounded-lg.mt-5 &larr; Wróć do listy
 
     div(class="md:flex-row").bg-gray-800.p-6.flex.flex-col.gap-8
         img.w-64.rounded-lg.shadow-md(src=`${char.image}`, alt=`Zdjecie ${char.name}`)

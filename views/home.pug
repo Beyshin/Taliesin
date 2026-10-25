@@ -1,13 +1,14 @@
 extends ./layout
 
 block content
-    div.flex.bg-gray-900.flex-col.justify-center
-        div.w-70.flex.flex-col.flex-wrap.gap-4.items-center
-            p.font-bold.text-4xl Taliesin
-            p Baza komiksów
-            div.flex.gap-4
-                a(class="hover:scale-105 transition-all duration-150" href="/comics").rounded-lg.bg-blue-600.font-bold.p-5
-                    p Przejdź do listy komiksów
-                a(class="hover:scale-105 transition-all duration-150" href="/characters").rounded-lg.bg-blue-600.font-bold.p-5
-                    p Przejdź do listy bohaterów
+    div(class="bg-[url('images/comic-bg.jpg')] h-[calc(100vh-4rem)]").flex.bg-gray-900.flex-col.justify-center.w-full.bg-cover.bg-center.bg-no-repeat
+        div(class="h-full w-full bg-black/60 flex items-center justify-center ").font-bangers
+            div.w-70.flex.flex-col.flex-wrap.gap-4.items-center
+                p.font-bold.text-8xl Taliesin
+                p Baza komiksów
+                div.flex.gap-4.flex-wrap.justify-center
+                    a(class="hover:scale-105 transition-all duration-150" href="/comics").rounded-lg.bg-blue-600.font-bold.p-5
+                        p Przejdź do listy komiksów
+                    a(class="hover:scale-105 transition-all duration-150" href="/characters").rounded-lg.bg-blue-600.font-bold.p-5
+                        p Przejdź do listy bohaterów
 

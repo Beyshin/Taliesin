@@ -1,10 +1,10 @@
 extends ../layout
 
 block content
-    a(class=".hover:text-blue-300" href="/comics").text-blue-400.mb-6.inline-block &larr; Wróć do listy
+    a(class=".hover:text-blue-300" href="/comics").text-white.mb-6.inline-block.bg-blue-600.p-5.rounded-lg.mt-5 &larr; Wróć do listy
 
     div(class="md:flex-row").bg-gray-800.p-6.flex.flex-col.gap-8
-        img.w-64.rounded-lg.shadow-md(src=`${comic.cover}`, alt=`Okładka ${comic.name}`)
+        img.w-64.rounded-lg.shadow-md(src=`${comic.cover}`, alt=`Okładka ${comic.title}`)
         div
             h1.text-4xl.font-bold.mb-2 #{comic.title}
             p.text-gray-400.text-sm Numer ID: #{comic.id}
@@ -14,7 +14,7 @@ block content
                 li.text-gray-400.text-m.ml-4 Rysunki: #{comic.creators.artist}
             p.text-gray-300 #{comic.description}
 
-            if userRole === 'admin'
+            if role === 'admin'
                 div.w-full.flex.justify-center.my-10
                     button(onclick=`deleteComic(${comic.id})`).text-white.bg-red-600.p-6.rounded-lg Usuń komiks
 

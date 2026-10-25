@@ -1,0 +1,15 @@
+extends  ./layout
+
+block content
+    div.flex.h-80.w-full.justify-center.items-center
+        div.flex.h-50.w-50.bg-gray-800.p-6.rounded-lg.flex-col
+            p.self-center.text-xl Zaloguj sie
+            div.flex.flex-col
+                form(action="/login" method="POST").flex.flex-col
+                    div
+                        label(for="username") Login:
+                        input(type="text", name="username", placeholder="Login").ml-2.my-4.p-2.text-black
+                    div
+                        label(for="password") Hasło:
+                        input(type="password", name="password", placeholder="*****").ml-2.mb-4.p-2.text-black
+                    button(type="submit").self-center Zaloguj
