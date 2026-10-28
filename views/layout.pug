@@ -14,7 +14,8 @@ html
                 a(href="/" class="hover:text-white transition-all duration-300 bg-gradient-to-t from-blue-600 from-50% to-transparent to-50% bg-[length:100%_200%] bg-top hover:bg-bottom").flex.items-center.h-full.px-4.text-gray-300.-skew-x-12.border-r-2.border-l-2.border-white Strona główna
                 a(href="/comics" class="hover:bg-blue-600 transition-all duration-300 bg-gradient-to-t from-blue-600 from-50% to-transparent to-50% bg-[length:100%_200%] bg-top hover:bg-bottom").flex.items-center.h-full.px-4.text-gray-300.-skew-x-12.border-r-2 Wszystkie komiksy
                 a(href="/characters" class="hover:bg-blue-600 transition-all duration-300 bg-gradient-to-t from-blue-600 from-50% to-transparent to-50% bg-[length:100%_200%] bg-top hover:bg-bottom").flex.items-center.h-full.px-4.text-gray-300.-skew-x-12.border-r-2 Bohaterowie
-
+                if role === 'admin'
+                    a(href="/admin" class="hover:bg-blue-600 transition-all duration-300 bg-gradient-to-t from-blue-600 from-50% to-transparent to-50% bg-[length:100%_200%] bg-top hover:bg-bottom").flex.items-center.h-full.px-4.text-gray-300.-skew-x-12.border-r-2 Panel administratora
             if username === null
                 div.flex.self-center.ml-auto
                     a(href="/login" class="hover:border-blue-600 hover:bg-white hover:text-blue-600 transition-all duration-300 border-2").p-2.bg-blue-600.rounded-lg Zaloguj
@@ -23,5 +24,5 @@ html
                     p.mr-4.self-center Witaj, #{username}
                     form(action="/logout" method="POST")
                         button(type="submit" class="hover:border-red-600 hover:bg-white hover:text-red-600 transition-all duration-300 border-2").p-2.bg-red-600.rounded-lg Wyloguj
-        main.container.mx-auto.font-bangers
+        main.font-bangers
             block content

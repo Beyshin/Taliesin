@@ -4,11 +4,12 @@ const session = require('express-session');
 const app = express();
 const port = process.env.PORT || 3000;
 
-const {userData} = require("./middlewares/auth");
+const {userData, checkAdmin} = require("./middlewares/auth");
 
 const comics = require("./routes/comics");
 const characters = require("./routes/characters");
 const home = require("./routes/home");
+const admin = require("./routes/admin");
 
 //TODO: zmienic na produkcji na secure, httpOnly, dać age i sameSite opcje
 app.use(session({
@@ -28,6 +29,7 @@ app.set("views", "./views");
 app.use("/", home);
 app.use('/comics', comics);
 app.use('/characters', characters);
+app.use('/admin', checkAdmin, admin);
 
 app.listen(port, () => {
     console.log("Taliesin is running on port " + port);

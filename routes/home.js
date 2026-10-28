@@ -34,9 +34,5 @@ router.post("/logout", (req, res) => {
     });
 })
 
-//TEST
-router.get("/admin", checkAdmin, (req, res) => {
-    res.send("jestes administratorem");
-});
 
 module.exports = router;
