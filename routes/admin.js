@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/add-comic', (req, res) => {
-  res.send('dodawanie komiksu');
+  res.render('admin/add-comic');
 });
 
 router.get('/add-character', (req, res) => {

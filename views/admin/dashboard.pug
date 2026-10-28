@@ -1,5 +1,9 @@
 extends ../layout
 
 block content
-  h1 Dashboard
-  p Witaj, #{username}.
+  div.flex.items-center.justify-center.my-4.w-full.h-full.flex-col
+    div.flex.items-center.justify-center.bg-gray-800.px-12.py-4.rounded-lg.text-3xl
+      p Dashboard
+    div.flex.items-center.justify-center.flex-row.my-12.gap-4
+      a(href="admin/add-comic").flex.justify-center.bg-green-500.px-12.py-4.rounded-lg Dodaj komiks
+      a(href="admin/delete-comic").flex.justify-center.bg-red-500.px-12.py-4.rounded-lg Usuń komiks

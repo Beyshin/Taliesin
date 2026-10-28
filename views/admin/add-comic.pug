@@ -1,0 +1,95 @@
+extends ../layout
+
+block content
+    div.container.mx-auto.py-12.px-4
+        a(href="/comics" class="inline-block mb-8 px-6 py-2 text-xl text-white bg-blue-600 border-2 border-white -skew-x-12 shadow-[4px_4px_0px_white] hover:shadow-[2px_2px_0px_white] transition-all font-bangers tracking-wide") &larr; Wróć do listy
+
+        h1.text-5xl.font-bangers.mb-8.text-white Dodaj nowy komiks
+
+        div(class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start")
+            div.bg-gray-800.p-6.rounded-xl.border-4.border-black
+                form(action="/comics/add" method="POST" class="flex flex-col gap-5 text-black")
+                    div.grid.grid-cols-1.gap-4
+                        div.flex.flex-col
+                            label.text-white.font-bangers.text-xl.tracking-wider(for="titleInput") Tytuł komiksu:
+                            input#titleInput(type="text" name="title" required placeholder="Wpisz tytuł..." class="p-2 rounded border-2 border-black focus:ring-2 focus:ring-blue-500 outline-none font-bold")
+                    div.grid.grid-cols-1.gap-4
+                        div.flex.flex-col
+                            label.text-white.font-bangers.text-xl.tracking-wider(for="issueInput") Numer wydania:
+                            input#issueInput(type="text" name="issueNumber" placeholder="np. #12" class="p-2 rounded border-2 border-black outline-none")
+                        div.flex.flex-col
+                            label.text-white.font-bangers.text-xl.tracking-wider(for="yearInput") Rok wydania:
+                            input#yearInput(type="number" name="releaseYear" placeholder="np. 2023" class="p-2 rounded border-2 border-black outline-none")
+                        div.flex.flex-col
+                            label.text-white.font-bangers.text-xl.tracking-wider(for="publisherInput") Wydawnictwo:
+                            input#publisherInput(type="text" name="publisher" placeholder="np. Marvel" class="p-2 rounded border-2 border-black outline-none")
+                    div.grid.grid-cols-1.gap-4
+                        div.flex.flex-col
+                            label.text-white.font-bangers.text-xl.tracking-wider(for="writerInput") Scenariusz (Writer):
+                            input#writerInput(type="text" name="writer" placeholder="Imię i Nazwisko..." class="p-2 rounded border-2 border-black outline-none")
+                        div.flex.flex-col
+                            label.text-white.font-bangers.text-xl.tracking-wider(for="artistInput") Rysunki (Artist):
+                            input#artistInput(type="text" name="artist" placeholder="Imię i Nazwisko..." class="p-2 rounded border-2 border-black outline-none")
+                    div.flex.flex-col
+                        label.text-white.font-bangers.text-xl.tracking-wider(for="charsInput") Postacie (po przecinku):
+                        input#charsInput(type="text" name="characters" placeholder="np. Batman, Joker, Gordon..." class="p-2 rounded border-2 border-black outline-none")
+                    div.flex.flex-col
+                        label.text-white.font-bangers.text-xl.tracking-wider(for="coverInput") Adres URL Okładki:
+                        input#coverInput(type="text" name="cover" placeholder="https://..." class="p-2 rounded border-2 border-black outline-none")
+                    div.flex.flex-col
+                        label.text-white.font-bangers.text-xl.tracking-wider(for="descInput") Opis:
+                        input#descInput(type="text" name="description" placeholder="Opis fabuły..." class="p-2 rounded border-2 border-black outline-none")
+                    button(type="submit" class="mt-4 bg-green-500 text-white font-bangers text-3xl py-4 rounded-lg border-4 border-black -skew-x-6 hover:scale-105 transition-all shadow-[6px_6px_0px_black] uppercase tracking-wider") Dodaj do bazy
+
+            div.sticky.top-10
+                h2.text-3xl.font-bangers.mb-4.text-gray-400.uppercase Podgląd detali:
+
+                div.bg-gray-900.p-6.rounded-xl.border-4.border-black.flex.flex-col.items-center.text-white.transform.rotate-1
+
+                    img#previewImage(src="https://via.placeholder.com/350x500?text=Brak+Okladki" alt="Okładka" class="w-full max-w-[250px] h-auto object-cover border-4 border-black shadow-[4px_4px_0px_black] rounded-sm mb-6")
+
+                    h3#previewTitle.text-4xl.font-bangers.text-yellow-400.text-center.uppercase.mb-4 Tytuł Komiksu
+
+                    div.w-full.grid.grid-cols-2.gap-4.bg-gray-800.p-4.rounded-lg.border-2.border-black.overflow-hidden
+                        div
+                            p.text-gray-400.text-xs.uppercase.font-bold Wydanie
+                            p#previewIssue.font-bangers.text-xl.tracking-wide Brak
+                        div
+                            p.text-gray-400.text-xs.uppercase.font-bold Rok wydania
+                            p#previewYear.font-bangers.text-xl.tracking-wide Brak
+                        div
+                            p.text-gray-400.text-xs.uppercase.font-bold Scenariusz
+                            p#previewWriter.font-bangers.text-xl.tracking-wide Brak
+                        div
+                            p.text-gray-400.text-xs.uppercase.font-bold Rysunki
+                            p#previewArtist.font-bangers.text-xl.tracking-wide Brak
+                        div.col-span-2
+                            p.text-gray-400.text-xs.uppercase.font-bold Opis
+                            p#previewDesc.font-bangers.text-xl.tracking-wide Brak
+
+    script.
+        const fields = [
+            { input: 'titleInput', preview: 'previewTitle', default: 'Tytuł Komiksu' },
+            { input: 'issueInput', preview: 'previewIssue', default: 'Brak' },
+            { input: 'yearInput', preview: 'previewYear', default: 'Brak' },
+            { input: 'writerInput', preview: 'previewWriter', default: 'Brak' },
+            { input: 'artistInput', preview: 'previewArtist', default: 'Brak' },
+            { input: 'descInput', preview: 'previewDesc', default: 'Brak' }
+        ];
+
+        fields.forEach(field => {
+            document.getElementById(field.input).addEventListener('input', (e) => {
+                document.getElementById(field.preview).textContent = e.target.value || field.default;
+            });
+        });
+
+        document.getElementById('coverInput').addEventListener('input', (e) => {
+            const previewImg = document.getElementById('previewImage');
+            const url = e.target.value;
+
+            if(url.startsWith('http')) {
+                previewImg.src = url;
+            } else {
+                previewImg.src = "https://via.placeholder.com/350x500?text=Brak+Okladki";
+            }
+        });
