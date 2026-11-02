@@ -1,4 +1,9 @@
 {
+    "functions": {
+        "index.js": {
+            "includeFiles": "{public/**,views/**}"
+        }
+    },
     "rewrites": [
         {
             "source": "/(.*)",
