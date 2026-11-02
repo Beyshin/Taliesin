@@ -27,6 +27,11 @@ app.use(express.urlencoded({ extended: true }));
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
 
+app.get('/output.css', (req, res) => {
+    res.type('text/css');
+    res.sendFile(path.join(__dirname, 'public', 'output.css'));
+});
+
 app.use("/", home);
 app.use('/comics', comics);
 app.use('/characters', characters);
