@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:css": "tailwindcss -c tailwind.config.js -i ./input.css -o ./public/output.css"
+    "build:css": "tailwindcss -c tailwind.config.js -i ./input.css -o ./public/output.css",
+    "build": "npx tailwindcss -c tailwind.config.js -i ./input.css -o ./public/output.css --minify",
+    "start": "node server.js",
+    "dev": "node server.js"
   },
   "author": "",
   "license": "ISC",
